@@ -7,7 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 
-const lognSchema = yup.object().shape({
+const loginSchema = yup.object().shape({
     identifier: yup.string().required("Please input your email or username"),
     password: yup.string().required("please input your password"),
 });
@@ -20,7 +20,7 @@ const useLogin = () => {
     const callbackUrl: string = (router.query.callbackUrl as string) || "/";
 
     const { control, handleSubmit, formState: { errors }, reset, setError } = useForm({
-        resolver: yupResolver(lognSchema),
+        resolver: yupResolver(loginSchema),
 
     });
 
