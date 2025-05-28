@@ -14,6 +14,7 @@ import { CiMenuKebab } from "react-icons/ci";
 import { COLUMN_LISTS_CATEGORY } from "./Category.constant";
 import useCategory from "./useCategory";
 import AddCategoryModal from "./AddCategoryModal";
+import DeleteCategoryModal from "./DeleteCategoryModal";
 
 const Category = () => {
   const { push, isReady, query } = useRouter();
@@ -30,9 +31,12 @@ const Category = () => {
     handleClearSearch,
     handleSearch,
     refetchCategory,
+    selectedId,
+    setSelectedId,
   } = useCategory();
 
   const addCategoryModal = useDisclosure();
+  const deleteCategoryModal = useDisclosure();
 
   useEffect(() => {
     if (isReady) setUrl();
@@ -43,10 +47,10 @@ const Category = () => {
       const cellValue = category[columnKey as keyof typeof category];
 
       switch (columnKey) {
-        // case "icon":
-        //   return (
-        //     <Image src={`${cellValue}`} alt="icon" width={100} height={200} />
-        //   );
+        case "icon":
+          return (
+            <Image src={`${cellValue}`} alt="icon" width={100} height={200} />
+          );
         case "actions":
           return (
             <Dropdown>
@@ -62,7 +66,14 @@ const Category = () => {
                 >
                   Detail Category
                 </DropdownItem>
-                <DropdownItem key="delete-category" className="text-danger-500">
+                <DropdownItem
+                  key="delete-category"
+                  className="text-danger-500"
+                  onPress={() => {
+                    setSelectedId(`${category._id}`);
+                    deleteCategoryModal.onOpen();
+                  }}
+                >
                   Delete
                 </DropdownItem>
               </DropdownMenu>
@@ -98,6 +109,12 @@ const Category = () => {
       <AddCategoryModal
         refetchCategory={refetchCategory}
         {...addCategoryModal}
+      />
+      <DeleteCategoryModal
+        {...deleteCategoryModal}
+        refetchCategory={refetchCategory}
+        selectedId={selectedId}
+        setSelectedId={setSelectedId}
       />
     </section>
   );
