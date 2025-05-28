@@ -31,7 +31,7 @@ const useCategory = () => {
         return data
     }
 
-    const { data: dataCategory, isLoading: isLoadingCategory, isRefetching: isRefetchingCategory } = useQuery({
+    const { data: dataCategory, isLoading: isLoadingCategory, isRefetching: isRefetchingCategory, refetch: refetchCategory } = useQuery({
         queryKey: ["Category", currentLimit, currentPage, currentSearch],
         queryFn: () => getCategories(),
         enabled: router.isReady && !!currentPage && !!currentLimit
@@ -92,7 +92,8 @@ const useCategory = () => {
         handleChangeLimit,
         handleChangePage,
         handleSearch,
-        handleClearSearch
+        handleClearSearch,
+        refetchCategory
     }
 };
 

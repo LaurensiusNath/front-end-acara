@@ -14,7 +14,6 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/react";
-import { b } from "framer-motion/client";
 import React, { ChangeEvent, Key, ReactNode, useMemo } from "react";
 import { CiSearch } from "react-icons/ci";
 
