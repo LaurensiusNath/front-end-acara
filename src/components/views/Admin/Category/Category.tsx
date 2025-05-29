@@ -15,31 +15,29 @@ import { COLUMN_LISTS_CATEGORY } from "./Category.constant";
 import useCategory from "./useCategory";
 import AddCategoryModal from "./AddCategoryModal";
 import DeleteCategoryModal from "./DeleteCategoryModal";
+import useChangeUrl from "@/hooks/useChangeUrl";
+import DropDownAction from "@/components/commons/DropownAction";
 
 const Category = () => {
   const { push, isReady, query } = useRouter();
   const {
-    setUrl,
     dataCategory,
     isLoadingCategory,
     isRefetchingCategory,
-    currentPage,
-    currentLimit,
-    currentSearch,
-    handleChangeLimit,
-    handleChangePage,
-    handleClearSearch,
-    handleSearch,
     refetchCategory,
+
     selectedId,
     setSelectedId,
   } = useCategory();
 
   const addCategoryModal = useDisclosure();
   const deleteCategoryModal = useDisclosure();
+  const { setUrl } = useChangeUrl();
 
   useEffect(() => {
-    if (isReady) setUrl();
+    if (isReady) {
+      setUrl();
+    }
   }, [isReady]);
 
   const renderCell = useCallback(
@@ -53,31 +51,15 @@ const Category = () => {
           );
         case "actions":
           return (
-            <Dropdown>
-              <DropdownTrigger>
-                <Button isIconOnly size="sm" variant="light">
-                  <CiMenuKebab className="text-default-700" />
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu>
-                <DropdownItem
-                  key="detail-category-button"
-                  onPress={() => push(`/admin/category/${category._id}`)}
-                >
-                  Detail Category
-                </DropdownItem>
-                <DropdownItem
-                  key="delete-category"
-                  className="text-danger-500"
-                  onPress={() => {
-                    setSelectedId(`${category._id}`);
-                    deleteCategoryModal.onOpen();
-                  }}
-                >
-                  Delete
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+            <DropDownAction
+              onPressButtonDetail={() =>
+                push(`/admin/category/${category._id}`)
+              }
+              onPressButtonDelete={() => {
+                setSelectedId(`${category._id}`);
+                deleteCategoryModal.onOpen();
+              }}
+            />
           );
         default:
           return cellValue as ReactNode;
@@ -92,15 +74,9 @@ const Category = () => {
         <DataTable
           buttonTopContentLabel="Create Category"
           columns={COLUMN_LISTS_CATEGORY}
-          currentPage={Number(currentPage)}
           data={dataCategory?.data || []}
           emptyContent="No Category Found"
-          limit={String(currentLimit)}
-          onChangeLimit={handleChangeLimit}
-          onChangePage={handleChangePage}
           renderCell={renderCell}
-          onChangeSearch={handleSearch}
-          onClearSearch={handleClearSearch}
           onClickButtonTopContent={addCategoryModal.onOpen}
           totalPages={dataCategory?.pagination.totalPages}
           isLoading={isLoadingCategory || isRefetchingCategory}
