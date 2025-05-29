@@ -1,11 +1,12 @@
 import { cn } from "@/utils/cn";
 import { Button, Spinner } from "@nextui-org/react";
 import Image from "next/image";
-import { ChangeEvent, useEffect, useId, useRef, useState } from "react";
+import { ChangeEvent, ReactNode, useEffect, useId, useRef } from "react";
 import { CiSaveUp2, CiTrash } from "react-icons/ci";
 
 interface PropTypes {
   name: string;
+  label?: ReactNode;
   className?: string;
   isDropable?: boolean;
   onUpload?: (files: FileList) => void;
@@ -20,6 +21,7 @@ interface PropTypes {
 const InputFile = (props: PropTypes) => {
   const {
     name,
+    label,
     className,
     isDropable,
     isInvalid,
@@ -70,6 +72,7 @@ const InputFile = (props: PropTypes) => {
 
   return (
     <div>
+      {label}
       <label
         ref={drop}
         htmlFor={`dropzone-file-${dropZoneId}`}
