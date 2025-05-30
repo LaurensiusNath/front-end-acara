@@ -8,6 +8,7 @@ import useEvent from "./useEvent";
 import { COLUMN_LISTS_EVENT } from "./Event.constant";
 import DropDownAction from "@/components/commons/DropownAction";
 import AddEventModal from "./AddEventModal";
+import DeleteEventModal from "./DeleteEventModal";
 
 const Event = () => {
   const { push, isReady, query } = useRouter();
@@ -89,6 +90,12 @@ const Event = () => {
         />
       )}
       <AddEventModal refetchEvents={refetchEvents} {...addEventModal} />
+      <DeleteEventModal
+        {...deleteEventModal}
+        refetchEvents={refetchEvents}
+        selectedId={selectedId}
+        setSelectedId={setSelectedId}
+      />
     </section>
   );
 };
