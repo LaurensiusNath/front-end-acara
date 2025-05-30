@@ -21,8 +21,7 @@ const useCategory = () => {
         queryKey: ["Categories", currentLimit, currentPage, currentSearch],
         queryFn: () => getCategories(),
         enabled: router.isReady && !!currentPage && !!currentLimit
-    }
-    )
+    })
 
     return {
         dataCategory,

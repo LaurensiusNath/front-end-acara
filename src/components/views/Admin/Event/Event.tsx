@@ -1,21 +1,13 @@
 import DataTable from "@/components/ui/DataTable";
-import {
-  Button,
-  Chip,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-  useDisclosure,
-} from "@nextui-org/react";
+import { Chip, useDisclosure } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { Key, ReactNode, useCallback, useEffect } from "react";
-import { CiMenuKebab } from "react-icons/ci";
 import useChangeUrl from "@/hooks/useChangeUrl";
 import useEvent from "./useEvent";
 import { COLUMN_LISTS_EVENT } from "./Event.constant";
 import DropDownAction from "@/components/commons/DropownAction";
+import AddEventModal from "./AddEventModal";
 
 const Event = () => {
   const { push, isReady, query } = useRouter();
@@ -86,7 +78,7 @@ const Event = () => {
     <section>
       {Object.keys(query).length > 0 && (
         <DataTable
-          buttonTopContentLabel="Create Category"
+          buttonTopContentLabel="Create Event"
           columns={COLUMN_LISTS_EVENT}
           data={dataEvents?.data || []}
           emptyContent="No Event Found"
@@ -96,6 +88,7 @@ const Event = () => {
           isLoading={isLoadingEvents || isRefetchingEvents}
         />
       )}
+      <AddEventModal refetchEvents={refetchEvents} {...addEventModal} />
     </section>
   );
 };
