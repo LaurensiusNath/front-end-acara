@@ -47,7 +47,7 @@ const CoverTab = (props: PropTypes) => {
   return (
     <Card className="w-full p-4 lg:w-1/2">
       <CardHeader className="flex-col items-center">
-        <h1 className="w-full text-xl font-bold">Event's Cover</h1>
+        <h1 className="w-full text-xl font-bold">Event Cover</h1>
         <p className="w-full text-small text-default-700">
           Manage cover of this event
         </p>
