@@ -64,7 +64,7 @@ const TicketTab = () => {
           <div className="flex flex-col items-center">
             <h1 className="w-full text-xl font-bold">Event Ticket</h1>
             <p className="w-full text-small text-default-700">
-              Manage ticket of this Event
+              Manage ticket of this event
             </p>
           </div>
           <Button onPress={addTicketModal.onOpen} color="danger">

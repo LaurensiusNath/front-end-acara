@@ -5,7 +5,7 @@ const AdminBannerPage = () => {
   return (
     <DashboardLayout
       title="Banner"
-      description="List of All Banners, Create New Banner and Manage Existing Banners"
+      description="List of All Banners, Create New Banner and Manage Existing Banner"
       type="admin"
     >
       <Banner />

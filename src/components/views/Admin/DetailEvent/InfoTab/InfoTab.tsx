@@ -186,6 +186,7 @@ const InfoTab = (props: PropTypes) => {
                   {...field}
                   label="Status"
                   variant="bordered"
+                  labelPlacement="outside"
                   isInvalid={errorsUpdateInfo.isPublish !== undefined}
                   errorMessage={errorsUpdateInfo.isPublish?.message}
                   disallowEmptySelection
@@ -213,6 +214,7 @@ const InfoTab = (props: PropTypes) => {
                   {...field}
                   label="Featured"
                   variant="bordered"
+                  labelPlacement="outside"
                   isInvalid={errorsUpdateInfo.isFeatured !== undefined}
                   errorMessage={errorsUpdateInfo.isFeatured?.message}
                   disallowEmptySelection

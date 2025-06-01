@@ -15,20 +15,22 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
 const eventSchema = yup.object().shape({
-  name: yup.string().required("Please input category name"),
-  slug: yup.string().required("Please input slug"),
-  category: yup.string().required("Please select category"),
+  name: yup.string().required("Please input event name"),
+  slug: yup.string().required("Please input slug for your event"),
+  category: yup.string().required("Please select category for your event"),
   startDate: yup.mixed<DateValue>().required("Please select start date"),
   endDate: yup.mixed<DateValue>().required("Please select end date"),
-  isPublish: yup.string().required("Please select status"),
-  isFeatured: yup.string().required("Please select featured"),
-  description: yup.string().required("Please input description"),
-  isOnline: yup.string().required("Please select online or offline"),
-  region: yup.string().required("Please select region"),
+  isPublish: yup.string().required("Please select event status"),
+  isFeatured: yup.string().required("Please select event featured"),
+  description: yup.string().required("Please input event description"),
+  isOnline: yup
+    .string()
+    .required("Please select online or offline for your event"),
+  region: yup.string().required("Please select event region"),
   longitude: yup.string().required("Please input longitude coordinate"),
   latitude: yup.string().required("Please input latitude coordinate"),
-  banner: yup.mixed<FileList | string>().required("Please input category icon"),
-  address: yup.string().required("Please input address"),
+  banner: yup.mixed<FileList | string>().required("Please input event banner"),
+  address: yup.string().required("Please input event address"),
 });
 
 const useAddEventModal = () => {

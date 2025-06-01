@@ -73,7 +73,7 @@ const LocationTab = (props: PropTypes) => {
       <CardHeader className="flex-col items-center">
         <h1 className="w-full text-xl font-bold">Event Location</h1>
         <p className="w-full text-small text-default-700">
-          Manage location of this Event
+          Manage location of this event
         </p>
       </CardHeader>
       <CardBody>

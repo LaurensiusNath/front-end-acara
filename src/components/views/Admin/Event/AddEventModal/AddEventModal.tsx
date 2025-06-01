@@ -118,7 +118,6 @@ const AddEventModal = (props: PropTypes) => {
                       isInvalid={errors.category !== undefined}
                       errorMessage={errors.category?.message}
                       onSelectionChange={(value) => onChange(value)}
-                      placeholder="Search Category Here"
                     >
                       {(category: ICategory) => (
                         <AutocompleteItem key={category._id}>

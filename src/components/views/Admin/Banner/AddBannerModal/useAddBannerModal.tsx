@@ -10,7 +10,7 @@ import * as yup from "yup";
 
 const addCategorySchema = yup.object().shape({
   title: yup.string().required("Please input banner title"),
-  isShow: yup.string().required("Please select show status"),
+  isShow: yup.string().required("Please select show status for your banner"),
   image: yup.mixed<FileList | string>().required("Please input banner image"),
 });
 

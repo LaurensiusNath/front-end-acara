@@ -9,10 +9,10 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
 const addCategorySchema = yup.object().shape({
-  name: yup.string().required("Please input category name"),
-  price: yup.string().required("Please input price"),
-  quantity: yup.string().required("Please input quantity"),
-  description: yup.string().required("Please input category description"),
+  name: yup.string().required("Please input ticket name"),
+  price: yup.string().required("Please input ticket price"),
+  quantity: yup.string().required("Please input ticket quantity"),
+  description: yup.string().required("Please input ticket description"),
 });
 
 const useAddTicketModal = () => {
