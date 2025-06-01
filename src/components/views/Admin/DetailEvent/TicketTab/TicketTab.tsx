@@ -8,10 +8,13 @@ import {
   CardHeader,
   useDisclosure,
 } from "@nextui-org/react";
-import React, { Fragment, Key, ReactNode, useCallback } from "react";
+import React, { Fragment, Key, ReactNode, useCallback, useState } from "react";
 import useTicketTab from "./useTicketTab";
 import { COLUMN_LISTS_TICKET } from "./TicketTab.constants";
 import AddTicketModal from "./AddTicketModal";
+import DeleteTicketModal from "./DeleteTicketModal";
+import { ITicket } from "@/types/Ticket";
+import { set } from "react-hook-form";
 
 const TicketTab = () => {
   const addTicketModal = useDisclosure();
@@ -19,6 +22,10 @@ const TicketTab = () => {
   const updateTicketModal = useDisclosure();
   const { dataTicket, isPendingTicket, isRefetchingTicket, refetchTicket } =
     useTicketTab();
+
+  const [selectedDataTicket, setSelectedDataTicket] = useState<ITicket | null>(
+    null,
+  );
 
   const renderCell = useCallback(
     (ticket: Record<string, unknown>, columnKey: Key) => {
@@ -35,6 +42,7 @@ const TicketTab = () => {
                 updateTicketModal.onOpen();
               }}
               onPressButtonDelete={() => {
+                setSelectedDataTicket(ticket as ITicket);
                 deleteTicketModal.onOpen();
               }}
             />
@@ -75,6 +83,12 @@ const TicketTab = () => {
         </CardBody>
       </Card>
       <AddTicketModal {...addTicketModal} refetchTicket={refetchTicket} />
+      <DeleteTicketModal
+        {...deleteTicketModal}
+        refetchTicket={refetchTicket}
+        selectedDataTicket={selectedDataTicket}
+        setSelectedDataTicket={setSelectedDataTicket}
+      />
     </Fragment>
   );
 };
