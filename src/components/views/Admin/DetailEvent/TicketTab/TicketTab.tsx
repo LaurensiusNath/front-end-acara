@@ -15,6 +15,7 @@ import AddTicketModal from "./AddTicketModal";
 import DeleteTicketModal from "./DeleteTicketModal";
 import { ITicket } from "@/types/Ticket";
 import { set } from "react-hook-form";
+import UpdateTicketModal from "./UpdateTicketModal";
 
 const TicketTab = () => {
   const addTicketModal = useDisclosure();
@@ -39,6 +40,7 @@ const TicketTab = () => {
           return (
             <DropDownAction
               onPressButtonDetail={() => {
+                setSelectedDataTicket(ticket as ITicket);
                 updateTicketModal.onOpen();
               }}
               onPressButtonDelete={() => {
@@ -85,6 +87,12 @@ const TicketTab = () => {
       <AddTicketModal {...addTicketModal} refetchTicket={refetchTicket} />
       <DeleteTicketModal
         {...deleteTicketModal}
+        refetchTicket={refetchTicket}
+        selectedDataTicket={selectedDataTicket}
+        setSelectedDataTicket={setSelectedDataTicket}
+      />
+      <UpdateTicketModal
+        {...updateTicketModal}
         refetchTicket={refetchTicket}
         selectedDataTicket={selectedDataTicket}
         setSelectedDataTicket={setSelectedDataTicket}
