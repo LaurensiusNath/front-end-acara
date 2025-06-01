@@ -8,6 +8,7 @@ import useChangeUrl from "@/hooks/useChangeUrl";
 import DropDownAction from "@/components/commons/DropownAction";
 import { COLUMN_LISTS_BANNER } from "./Banner.constant";
 import AddBannerModal from "./AddBannerModal";
+import DeleteBannerModal from "./DeleteBannerModal";
 
 const Banner = () => {
   const { push, isReady, query } = useRouter();
@@ -88,6 +89,12 @@ const Banner = () => {
         />
       )}
       <AddBannerModal refetchBanners={refetchBanners} {...addBannerModal} />
+      <DeleteBannerModal
+        {...deleteBannerModal}
+        refetchBanners={refetchBanners}
+        selectedId={selectedId}
+        setSelectedId={setSelectedId}
+      />
     </section>
   );
 };
