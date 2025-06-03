@@ -30,4 +30,17 @@ const toInputDate = (date: string) => {
     return formattedDate;
 }
 
-export { toDateStandard, toInputDate }
+const convertTime = (isoDate: string) => {
+    const dateObj = new Date(isoDate);
+    const date = dateObj.toLocaleString("id-ID", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "Asia/Jakarta"
+    });
+    return `${date} WIB`
+}
+
+export { toDateStandard, toInputDate, convertTime }

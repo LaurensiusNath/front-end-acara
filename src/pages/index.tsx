@@ -1,16 +1,11 @@
-import { Inter } from "next/font/google";
-import { Button } from "@nextui-org/react";
-import PageHead from "@/components/commons/PageHead";
+import LandingPageLayout from "@/components/layouts/LandingPageLayout";
+import Home from "@/components/views/Home";
 
-const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <PageHead title="home" />
-      <Button color="primary">Button</Button>
-    </main>
+    <LandingPageLayout title="Acara - Home">
+      <Home />
+    </LandingPageLayout>
   );
 }
