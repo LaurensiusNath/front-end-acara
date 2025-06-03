@@ -8,6 +8,8 @@ import {
   DropdownTrigger,
   Input,
   Link,
+  Listbox,
+  ListboxItem,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -15,6 +17,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
+  Spinner,
 } from "@nextui-org/react";
 import Image from "next/image";
 import { BUTTON_ITEMS, NAV_ITEMS } from "../LandingPageLayout.constants";
@@ -24,11 +27,20 @@ import { CiSearch } from "react-icons/ci";
 import { signOut, useSession } from "next-auth/react";
 import useLandingPageLayoutNavbar from "./useLandingPageLayoutNavbar";
 import { Fragment } from "react";
+import { IEvent } from "@/types/Event";
 
 const LandingPageLayoutNavbar = () => {
   const router = useRouter();
   const session = useSession();
-  const { dataProfile } = useLandingPageLayoutNavbar();
+  const {
+    dataProfile,
+    handleSearch,
+    dataEventsSearch,
+    isLoadingEventsSearch,
+    isRefetchingEventsSearch,
+    search,
+    setSearch,
+  } = useLandingPageLayoutNavbar();
   return (
     <Navbar maxWidth="full" isBordered isBlurred={false} shouldHideOnScroll>
       <div className="flex items-center gap-8">
@@ -65,9 +77,40 @@ const LandingPageLayoutNavbar = () => {
             className="w-[300px]"
             placeholder="Search Event..."
             startContent={<CiSearch />}
-            onClear={() => {}}
-            onChange={() => {}}
+            onClear={() => setSearch("")}
+            onChange={handleSearch}
           />
+          {search !== "" && (
+            <Listbox
+              items={dataEventsSearch?.data || []}
+              className="absolute right-0 top-12 rounded-xl border bg-white"
+            >
+              {!isRefetchingEventsSearch && !isLoadingEventsSearch ? (
+                (item: IEvent) => (
+                  <ListboxItem key={item._id} href={`/event/${item.slug}`}>
+                    <div className="flex items-center gap-2">
+                      <Image
+                        src={`${item.banner}`}
+                        alt={`${item.name}`}
+                        className="w-2/5 rounded-md"
+                        width={100}
+                        height={40}
+                      />
+                      <p className="line-clamp-2 w-3/5 text-wrap">
+                        {item.name}
+                      </p>
+                    </div>
+                  </ListboxItem>
+                )
+              ) : (
+                <ListboxItem key="loading">
+                  <div className="flex justify-center">
+                    <Spinner color="danger" size="sm" />
+                  </div>
+                </ListboxItem>
+              )}
+            </Listbox>
+          )}
         </NavbarItem>
 
         {session.status === "authenticated" ? (
