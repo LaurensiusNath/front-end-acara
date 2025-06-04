@@ -36,7 +36,7 @@ const DetailEvent = () => {
         data-client-key={environment.MIDTRANS_CLIENT_KEY}
         strategy="lazyOnload"
       />
-      <Skeleton className="h-6 w-1/4 rounded-lg" isLoaded={!!dataEvent?.name}>
+      <Skeleton className="h-6 w-full lg:w-1/4 rounded-lg" isLoaded={!!dataEvent?.name}>
         <Breadcrumbs>
           <BreadcrumbItem href="/">Home</BreadcrumbItem>
           <BreadcrumbItem href="/event">Event</BreadcrumbItem>
@@ -55,7 +55,7 @@ const DetailEvent = () => {
             </h1>
           </Skeleton>
           <Skeleton
-            className="mb-2 h-6 w-1/2 rounded-lg"
+            className="mb-2 h-6 w-full lg:w-1/2 rounded-lg"
             isLoaded={!!dataEvent?.startDate && !!dataEvent?.endDate}
           >
             <div className="mb-2 flex items-center gap-2 text-foreground-500">
@@ -68,7 +68,7 @@ const DetailEvent = () => {
           </Skeleton>
 
           <Skeleton
-            className="mb-2 h-6 w-1/2 rounded-lg"
+            className="mb-2 h-6 w-full lg:w-1/2 rounded-lg"
             isLoaded={
               !!dataEvent?.location && !!dataEvent?.isOnline !== undefined
             }
