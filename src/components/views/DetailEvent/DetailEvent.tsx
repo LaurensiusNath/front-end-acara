@@ -69,7 +69,9 @@ const DetailEvent = () => {
 
           <Skeleton
             className="mb-2 h-6 w-1/2 rounded-lg"
-            isLoaded={!!dataEvent?.location && !!dataEvent?.isOnline}
+            isLoaded={
+              !!dataEvent?.location && !!dataEvent?.isOnline !== undefined
+            }
           >
             <div className="flex items-center gap-2 text-foreground-500">
               <FaLocationDot width={16} />
