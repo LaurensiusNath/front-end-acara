@@ -56,7 +56,7 @@ const Transaction = () => {
           return (
             <DropDownAction
               onPressButtonDetail={() =>
-                push(`/member/transaction/${transaction?.orderId}`)
+                push(`/admin/transaction/${transaction?.orderId}`)
               }
               onPressButtonDelete={() => {
                 setSelectedId(`${transaction.orderId}`);
