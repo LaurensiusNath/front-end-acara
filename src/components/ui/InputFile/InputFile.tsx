@@ -104,7 +104,7 @@ const InputFile = (props: PropTypes) => {
 
         {!preview && !isUploading && (
           <div className="flex flex-col items-center justify-center p-5">
-            <div className="mb-2 w-1/2">
+            <div className="mb-2 flex w-1/2 justify-center">
               <CiSaveUp2 className="mb-2 h-10 w-10 text-gray-400" />
             </div>
             <p className="text-center text-sm font-semibold text-gray-500">
