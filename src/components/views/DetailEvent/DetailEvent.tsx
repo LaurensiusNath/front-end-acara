@@ -48,14 +48,14 @@ const DetailEvent = () => {
         <div className="w-full lg:w-4/6">
           <Skeleton
             isLoaded={!!dataEvent?.name}
-            className="mb-2 h-8 rounded-lg"
+            className="mb-2 lg:h-8 rounded-lg"
           >
             <h1 className="text-2xl font-semibold text-danger">
               {dataEvent?.name}
             </h1>
           </Skeleton>
           <Skeleton
-            className="mb-2 h-6 w-full lg:w-1/2 rounded-lg"
+            className="mb-2 lg:h-6 w-full lg:w-1/2 rounded-lg"
             isLoaded={!!dataEvent?.startDate && !!dataEvent?.endDate}
           >
             <div className="mb-2 flex items-center gap-2 text-foreground-500">
@@ -68,7 +68,7 @@ const DetailEvent = () => {
           </Skeleton>
 
           <Skeleton
-            className="mb-2 h-6 w-full lg:w-1/2 rounded-lg"
+            className="mb-2 lg:h-6 w-full lg:w-1/2 rounded-lg"
             isLoaded={
               !!dataEvent?.location && !!dataEvent?.isOnline !== undefined
             }
