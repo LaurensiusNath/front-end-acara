@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 const usePayment = () => {
   const router = useRouter();
-  const { orderId, status } = router.query;
+  const { order_id: orderId, status } = router.query;
 
   const standardizeStatus = (status: string) => {
     switch (status) {
