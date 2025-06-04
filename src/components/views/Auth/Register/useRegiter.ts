@@ -47,7 +47,13 @@ const useRegister = () => {
             })
         },
         onSuccess: () => {
-            reset();
+            reset({
+                fullName: "",
+                username: "",
+                confirmPassword: "",
+                email: "",
+                password: "",
+            });
             setToaster({
                 type: "success",
                 message: "Register Success"

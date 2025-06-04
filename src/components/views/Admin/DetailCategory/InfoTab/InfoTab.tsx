@@ -43,7 +43,10 @@ const InfoTab = (props: PropTypes) => {
 
   useEffect(() => {
     if (isSuccessMutateUpdateCategory) {
-      resetUpdateInfo();
+      resetUpdateInfo({
+        name: `${dataCategory?.name}`,
+        description: `${dataCategory?.description}`,
+      });
     }
   }, [isSuccessMutateUpdateCategory]);
 

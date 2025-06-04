@@ -45,7 +45,10 @@ const InfoTab = (props: PropTypes) => {
 
   useEffect(() => {
     if (isSuccessMutateUpdateBanner) {
-      resetUpdateInfo();
+      resetUpdateInfo({
+        title: `${dataBanner?.title}`,
+        isShow: `${dataBanner?.isShow}`,
+      });
     }
   }, [isSuccessMutateUpdateBanner]);
 

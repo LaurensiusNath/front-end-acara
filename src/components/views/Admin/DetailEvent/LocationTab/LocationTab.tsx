@@ -64,7 +64,13 @@ const LocationTab = (props: PropTypes) => {
 
   useEffect(() => {
     if (isSuccessMutateUpdateEvent) {
-      resetUpdateLocation();
+      resetUpdateLocation({
+        address: `${dataEvent?.location?.address}`,
+        isOnline: `${dataEvent?.isOnline}`,
+        region: `${dataEvent?.location?.region}`,
+        latitude: `${dataEvent?.location?.coordinates[0]}`,
+        longitude: `${dataEvent?.location?.coordinates[1]}`,
+      });
     }
   }, [isSuccessMutateUpdateEvent]);
 

@@ -47,7 +47,10 @@ const useLogin = () => {
 
         },
         onSuccess: () => {
-            reset();
+            reset({
+                identifier: "",
+                password: "",
+            });
             setToaster({
                 type: "success",
                 message: "Login Success"

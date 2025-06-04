@@ -31,16 +31,18 @@ const Home = () => {
         urlMore="/event?isFeatured=true"
       />
       <Skeleton
-        isLoaded={!isLoadingBanners}
+        isLoaded={!isLoadingBanners && dataBanners?.data.length > 0}
         className="mb-16 h-[20vw] w-full rounded-2xl px-6 lg:px-0"
       >
-        <Image
-          src={dataBanners && `${dataBanners?.data[1]?.image}`}
-          alt="banner"
-          className="h-[20vw] w-full rounded-2xl object-cover object-center"
-          width={1920}
-          height={800}
-        />
+        {dataBanners?.data.length > 0 && (
+          <Image
+            src={`${dataBanners?.data[0]?.image}`}
+            alt="banner"
+            className="h-[20vw] w-full rounded-2xl object-cover object-center"
+            width={1920}
+            height={800}
+          />
+        )}
       </Skeleton>
       <HomeEventList
         title="Latest Event"

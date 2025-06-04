@@ -59,7 +59,16 @@ const InfoTab = (props: PropTypes) => {
 
   useEffect(() => {
     if (isSuccessMutateUpdateEvent) {
-      resetUpdateInfo();
+      resetUpdateInfo({
+        name: dataEvent?.name,
+        description: dataEvent?.description,
+        slug: dataEvent?.slug,
+        category: dataEvent?.category,
+        startDate: toInputDate(`${dataEvent?.startDate}`),
+        endDate: toInputDate(`${dataEvent?.endDate}`),
+        isPublish: `${dataEvent?.isPublish}`,
+        isFeatured: `${dataEvent?.isFeatured}`,
+      });
     }
   }, [isSuccessMutateUpdateEvent]);
 
