@@ -3,7 +3,7 @@ import DetailEvent from "@/components/views/DetailEvent";
 
 export default function DetailEventPage() {
   return (
-    <LandingPageLayout title="Acara - Home">
+    <LandingPageLayout title="Acara - Event">
       <DetailEvent />
     </LandingPageLayout>
   );

@@ -4,7 +4,7 @@ import Home from "@/components/views/Home";
 
 export default function HomePage() {
   return (
-    <LandingPageLayout title="Acara - Home">
+    <LandingPageLayout title="Acara">
       <Home />
     </LandingPageLayout>
   );
