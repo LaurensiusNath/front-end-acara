@@ -1,40 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎟️ Acara – Event Ticketing Platform
 
-## Getting Started
+**Acara** is a full-stack web application for browsing, managing, and purchasing event tickets — built as a solo project using the MERN stack.
 
-First, run the development server:
+Users can explore events, filter them by category, register with email verification, and purchase tickets using an integrated payment gateway. Admins get their own dashboard to manage events, banners, categories, and transactions.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 🔐 Role-based access for **Member** and **Admin**
+- 📧 Email verification on registration via **Nodemailer**
+- 🗂️ Event filtering by category
+- 💳 Payment integration using **Midtrans**
+- 🧾 Admin dashboard for managing content and transactions
+- 🌐 RESTful API with **Express.js** & **MongoDB**
+- ⚡ Fast and responsive UI with **Next.js**, **Tailwind CSS**, and **NextUI**
+- ✅ Form validation with **React Hook Form**, **Yup**, and **TanStack React Query**
+- 🚀 Deployed on [Vercel](https://front-end-acara-kappa.vercel.app/)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+**Frontend:**
+- Next.js
+- Tailwind CSS
+- NextUI
+- React Hook Form
+- Yup
+- TanStack React Query
+- Axios
+- NextAuth
+- SweetAlert
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Backend:**
+- Node.js
+- Express.js
+- MongoDB & Mongoose
+- Nodemailer
+- Midtrans API
